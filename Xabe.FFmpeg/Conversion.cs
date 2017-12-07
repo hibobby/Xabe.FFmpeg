@@ -43,6 +43,7 @@ namespace Xabe.FFmpeg
         private string _video;
         private string _videoSpeed;
         private string _watermark;
+        private string _logLevel;
 
         /// <inheritdoc />
         public string Build()
@@ -53,6 +54,7 @@ namespace Xabe.FFmpeg
                 builder.Append(_input);
                 AddSubtitles(builder);
                 builder.Append("-n ");
+                builder.Append(_logLevel);
                 builder.Append(_watermark);
                 builder.Append(_scale);
                 builder.Append(_video);
@@ -127,6 +129,21 @@ namespace Xabe.FFmpeg
                     .Where(x => x.FieldType == typeof(string));
             foreach(FieldInfo fieldinfo in _fields)
                 fieldinfo.SetValue(this, null);
+        }
+
+        private static readonly Dictionary<LogLevel, string> _logLevels = new Dictionary<LogLevel, string>();
+
+        /// <inheritdoc />
+        public IConversion SetLogLevel(LogLevel logLevel)
+        {
+            if (!_logLevels.TryGetValue(logLevel, out string description))
+            {
+                description = Extensions.GetDescription(logLevel);
+                _logLevels.Add(logLevel, description);
+            }
+
+            _logLevel = $"-loglevel={description}";
+            return this;
         }
 
         /// <inheritdoc />

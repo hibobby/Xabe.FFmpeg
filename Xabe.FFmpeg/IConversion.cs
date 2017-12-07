@@ -25,6 +25,13 @@ namespace Xabe.FFmpeg
         void Clear();
 
         /// <summary>
+        ///     Set log level for ffmpeg
+        /// </summary>
+        /// <param name="logLevel">FFmpeg log level</param>
+        /// <returns>IConversion object</returns>
+        IConversion SetLogLevel(LogLevel logLevel);
+
+        /// <summary>
         ///     Reverse media
         /// </summary>
         /// <param name="type">Channel type</param>
