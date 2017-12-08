@@ -43,12 +43,12 @@ namespace Xabe.FFmpeg.Enums
         [Description("40")] Verbose,
 
         /// <summary>
-        ///     Advanced
+        ///     Show everything, including debugging information.
         /// </summary>
         [Description("48")] Debug,
 
         /// <summary>
-        ///     Advanced
+        ///     
         /// </summary>
         [Description("56")] Trace
     }
