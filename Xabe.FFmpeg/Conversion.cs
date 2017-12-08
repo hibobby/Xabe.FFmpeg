@@ -142,7 +142,7 @@ namespace Xabe.FFmpeg
                 _logLevels.Add(logLevel, description);
             }
 
-            _logLevel = $"-loglevel={description}";
+            _logLevel = $"-loglevel={description} ";
             return this;
         }
 
